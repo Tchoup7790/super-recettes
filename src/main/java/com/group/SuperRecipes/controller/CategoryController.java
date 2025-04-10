@@ -4,7 +4,15 @@ import com.group.SuperRecipes.model.dao.Category;
 import com.group.SuperRecipes.model.dto.CreateCategoryInput;
 import com.group.SuperRecipes.service.CategoryService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import java.util.List;
 
 @RestController
@@ -27,10 +35,13 @@ public class CategoryController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Category> one(@PathVariable String id) {
-        return service.findById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+    public Category one(@PathVariable String id) {
+        return service.findById(id);
+    }
+
+    @PutMapping("/{id}")
+    public Category updateCategory(@PathVariable String id, @RequestBody CreateCategoryInput input) {
+        return service.update(id, input);
     }
 
     @DeleteMapping("/{id}")
