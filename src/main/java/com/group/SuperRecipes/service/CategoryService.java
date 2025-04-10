@@ -1,5 +1,6 @@
 package com.group.SuperRecipes.service;
-import com.group.SuperRecipes.model.Category;
+import com.group.SuperRecipes.model.dao.Category;
+import com.group.SuperRecipes.model.dto.CreateCategoryInput;
 import com.group.SuperRecipes.repository.CategoryRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -17,15 +18,19 @@ public class CategoryService {
         return repo.findAll();
     }
 
-    public Category save(Category c) {
-        return repo.save(c);
+    public Category save(CreateCategoryInput input) {
+        Category newCategory = Category.builder()
+                .name(input.name())
+                .build();
+
+        return repo.save(newCategory);
     }
 
-    public Optional<Category> findById(Long id) {
+    public Optional<Category> findById(String id) {
         return repo.findById(id);
     }
 
-    public void delete(Long id) {
+    public void delete(String id) {
         repo.deleteById(id);
     }
 }
