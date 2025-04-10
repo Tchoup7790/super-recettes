@@ -6,6 +6,7 @@ import com.group.SuperRecipes.service.IngredientService;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,9 +24,10 @@ public class IngredientController {
     public IngredientController(IngredientService ingredientService) {
         this.ingredientService = ingredientService;
     }
+
     @GetMapping
     public List<Ingredient> getAllIngredients() {
-        return categoryIngredient.getAllIngredients();
+        return ingredientService.getAllIngredient();
     }
 
     @GetMapping("/{id}")
@@ -43,4 +45,8 @@ public class IngredientController {
         return ingredientService.updateIngredient(id, input);
     }
 
+    @DeleteMapping("/{id}")
+    public void deleteIngredient(@PathVariable String id) {
+        ingredientService.deleteIngredient(id);
+    }
 }
