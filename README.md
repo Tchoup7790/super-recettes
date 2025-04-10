@@ -1,4 +1,4 @@
-# 📚 Suprer Recettes - Application de Recettes (Spring Boot + PostgreSQL)
+# 📚 Super Recettes - Application de Recettes (Spring Boot + PostgreSQL)
 
 ## 🧾 Description
 
@@ -17,8 +17,6 @@ Aucune gestion d'utilisateur ou d'authentification : on se concentre uniquement 
 - PostgreSQL
 - Flyway (migrations DB)
 - QueryDSL (filtres dynamiques)
-- Lombok (facultatif, pour alléger le code)
-- Swagger/OpenAPI (optionnel)
 - Maven
 
 ---
