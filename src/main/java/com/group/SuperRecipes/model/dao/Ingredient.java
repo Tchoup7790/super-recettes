@@ -1,4 +1,4 @@
-package com.group.SuperRecipes.model.Ingredient;
+package com.group.SuperRecipes.model.dao;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

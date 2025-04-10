@@ -1,6 +1,6 @@
 package com.group.SuperRecipes.repository;
 
-import com.group.SuperRecipes.model.dao.Repository.IngredientRepository;
+import com.group.SuperRecipes.repository.IngredientRepository;
 
 import java.util.Optional;
 
