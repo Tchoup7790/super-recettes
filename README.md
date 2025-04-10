@@ -1,4 +1,4 @@
-# 📚 Suprer Recettes - Application de Recettes (Spring Boot + PostgreSQL)
+# 📚 Super Recettes - Application de Recettes (Spring Boot + PostgreSQL)
 
 ## 🧾 Description
 
@@ -6,20 +6,6 @@ Cette application est une API REST permettant de gérer un catalogue de recettes
 Elle respecte les standards d'architecture REST et est construite en Java avec Spring Boot.
 
 Aucune gestion d'utilisateur ou d'authentification : on se concentre uniquement sur le domaine métier.
-
----
-
-## 🛠️ Technologies utilisées
-
-- Java 17
-- Spring Boot
-- Spring Data JPA (Hibernate)
-- PostgreSQL
-- Flyway (migrations DB)
-- QueryDSL (filtres dynamiques)
-- Lombok (facultatif, pour alléger le code)
-- Swagger/OpenAPI (optionnel)
-- Maven
 
 ---
 
