@@ -1,10 +1,13 @@
 package com.group.SuperRecipes.service;
+
+import com.group.SuperRecipes.Exception.ApiException;
 import com.group.SuperRecipes.model.dao.Category;
 import com.group.SuperRecipes.model.dto.CreateCategoryInput;
 import com.group.SuperRecipes.repository.CategoryRepository;
+
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CategoryService {
@@ -26,11 +29,27 @@ public class CategoryService {
         return repo.save(newCategory);
     }
 
-    public Optional<Category> findById(String id) {
-        return repo.findById(id);
+    public Category findById(String id) {
+        return repo.findById(id).orElseThrow(() -> new ApiException(
+                HttpStatus.NOT_FOUND,
+                "Category not found"));
+    }
+
+    public Category update(String id, CreateCategoryInput input) {
+        Category category = repo.findById(id).orElseThrow(() -> new ApiException(
+                HttpStatus.NOT_FOUND,
+                "Category not found"));
+
+        category.setName(input.name());
+
+        return repo.save(category);
     }
 
     public void delete(String id) {
-        repo.deleteById(id);
+        Category category = repo.findById(id).orElseThrow(() -> new ApiException(
+                HttpStatus.NOT_FOUND,
+                "Category not found"));
+
+        repo.delete(category);
     }
 }
