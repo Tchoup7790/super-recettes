@@ -9,18 +9,6 @@ Aucune gestion d'utilisateur ou d'authentification : on se concentre uniquement 
 
 ---
 
-## 🛠️ Technologies utilisées
-
-- Java 17
-- Spring Boot
-- Spring Data JPA (Hibernate)
-- PostgreSQL
-- Flyway (migrations DB)
-- QueryDSL (filtres dynamiques)
-- Maven
-
----
-
 ## 🧱 Structure du projet
 ```
 com.recipes 
