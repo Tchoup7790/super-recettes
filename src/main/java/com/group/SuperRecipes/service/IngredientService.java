@@ -1,4 +1,4 @@
-package com.group.SuperRecipes.model.Ingredient ;
+package com.group.SuperRecipes.service ;
 
 import com.group.SuperRecipes.model.dao.Ingredient;
 import com.group.SuperRecipes.model.dto.IngredientCreateInput;
@@ -43,7 +43,7 @@ public class IngredientService {
 
         ingredient.setName(input.name());
 
-        return ingredientRepository.save(category);
+        return ingredientRepository.save(ingredient);
     }
 
 }
