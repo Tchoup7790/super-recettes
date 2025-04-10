@@ -1,6 +1,6 @@
 package com.group.SuperRecipes.service;
 
-import com.group.SuperRecipes.Exception.ApiException;
+import com.group.SuperRecipes.exception.ApiException;
 import com.group.SuperRecipes.model.dao.Category;
 import com.group.SuperRecipes.model.dao.Recipe;
 import com.group.SuperRecipes.model.dto.CreateRecipeInput;
