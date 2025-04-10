@@ -20,23 +20,23 @@ public class IngredientService {
         return ingredientRepository.findAll();
     }
 
-    public Category getIngredientById(String id) {
+    public Ingredient getIngredientById(String id) {
         return ingredientRepository.findById(id).orElseThrow(() -> new ApiException(
                 HttpStatus.NOT_FOUND,
                 "Ingredient not found"
         ));
     }
 
-    public Category createIngredient(IngredientCreateInput input) {
-        Ingredient newCategory = Ingredient.builder()
+    public Ingredient createIngredient(IngredientCreateInput input) {
+        Ingredient newIngredient = Ingredient.builder()
                 .name(input.name())
                 .build();
 
-        return ingredientRepository.save(newCategory);
+        return ingredientRepository.save(newIngredient);
     }
 
     public Ingredient updateIngredient(String id, IngredientCreateInput input) {
-        Ingredient category = ingredientRepository.findById(id).orElseThrow(() -> new ApiException(
+        Ingredient ingredient = ingredientRepository.findById(id).orElseThrow(() -> new ApiException(
                 HttpStatus.NOT_FOUND,
                 "Ingredient not found"
         ));
