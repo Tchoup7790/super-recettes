@@ -1,7 +1,7 @@
 package com.group.SuperRecipes.service;
 
 import com.group.SuperRecipes.model.dao.Ingredient;
-import com.group.SuperRecipes.model.dto.IngredientCreateInput;
+import com.group.SuperRecipes.model.dto.CreateIngredientInput;
 import com.group.SuperRecipes.exception.ApiException;
 import com.group.SuperRecipes.repository.IngredientRepository;
 import java.util.List;
@@ -26,7 +26,7 @@ public class IngredientService {
                 "Ingredient not found"));
     }
 
-    public Ingredient createIngredient(IngredientCreateInput input) {
+    public Ingredient createIngredient(CreateIngredientInput input) {
         Ingredient newIngredient = Ingredient.builder()
                 .name(input.name())
                 .build();
@@ -34,7 +34,7 @@ public class IngredientService {
         return ingredientRepository.save(newIngredient);
     }
 
-    public Ingredient updateIngredient(String id, IngredientCreateInput input) {
+    public Ingredient updateIngredient(String id, CreateIngredientInput input) {
         Ingredient ingredient = ingredientRepository.findById(id).orElseThrow(() -> new ApiException(
                 HttpStatus.NOT_FOUND,
                 "Ingredient not found"));
