@@ -1,4 +1,4 @@
-package com.group.SuperRecipes.Exception;
+package com.group.SuperRecipes.exception;
 
 import org.springframework.http.HttpStatus;
 
