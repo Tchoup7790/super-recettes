@@ -5,15 +5,8 @@
 <i>Le projet est a but pédagogique, un déploiement n'est pas prévu</i>
 </p>
 
-<p align="center">
-  <a href="#description">Description</a> •
-  <a href="#contribution">Contribution</a> •
-  <a href="#about">About</a>
-</p>
-
 Une API REST permettant de gérer des recettes de cuisine, leurs ingrédients, étapes de préparation et catégories.
 
----
 
 ## Description
 
@@ -33,18 +26,14 @@ Les cas d'usage principaux incluent :
 - Ajout d’une étape indépendamment
 - Mise à jour ou suppression d’un ingrédient
 
----
-
-## Fonctionnalités
+### Fonctionnalités
 
 - 🔸 CRUD complet sur `recipes`, `steps`, `ingredients`, `categories`
 - 🔁 Gestion des relations entre entités (OneToMany, ManyToMany)
 - 🧠 Boucles d’objets contrôlées avec `@JsonManagedReference` et `@JsonBackReference`
 - 🧪 Base de données relationnelle (PostrgeSQL) avec persistance
 
----
-
-## Build With
+### Build With
 
 - [Java 17](https://openjdk.org/)
 - [Spring Boot](https://spring.io/projects/spring-boot)
@@ -53,7 +42,6 @@ Les cas d'usage principaux incluent :
 - [PostrgeSQL](https://www.postgresql.org/)
 - [Postman](https://www.postman.com/)
 
----
 
 ## Contribution
 
@@ -92,18 +80,16 @@ src/main/ressources/
 └── application.yml
 ```
 
----
 
-## Pré-requis
+### Pré-requis
 
 * [Java 17](https://openjdk.org/)
 * [Gradle](https://gradle.org/)
 * [PostrgeSQL](https://www.postgresql.org/)
 * (facultatif) [Postman](https://www.postman.com/)
 
----
 
-## Initialisation du projet
+### Initialisation du projet
 
 1. Clonez le dépôt
 
@@ -125,11 +111,10 @@ cd ./super-recettes
 
 7. Accédez à l’API via `http://localhost:8080`
 
----
 
 ## Exemple de requête
 
-### POST /steps
+### POST api/v1/steps
 
 ```json
 {
@@ -139,7 +124,7 @@ cd ./super-recettes
 }
 ```
 
-### GET /recipes/{id}
+### GET api/v1/recipes/{id}
 
 ```json
 {
@@ -162,7 +147,77 @@ cd ./super-recettes
 }
 ```
 
----
+
+### API Endpoints
+
+| Ressource    | Méthode | Endpoint               | Description                  |
+|--------------|---------|------------------------|------------------------------|
+| Categories   | POST    | `/categories`          | Créer une catégorie          |
+|              | GET     | `/categories`          | Lister toutes les catégories |
+|              | GET     | `/categories/{:id}`    | Récupérer une catégorie      |
+|              | PUT     | `/categories/{:id}`    | Mettre à jour une catégorie  |
+|              | DELETE  | `/categories/{:id}`    | Supprimer une catégorie      |
+| Ingredients  | POST    | `/ingredients`         | Créer un ingrédient          |
+|              | GET     | `/ingredients`         | Lister tous les ingrédients  |
+|              | GET     | `/ingredients/{:id}`   | Récupérer un ingrédient      |
+|              | PUT     | `/ingredients/{:id}`   | Mettre à jour un ingrédient  |
+|              | DELETE  | `/ingredients/{:id}`   | Supprimer un ingrédient      |
+| Recipes      | POST    | `/recipes`             | Créer une recette            |
+|              | GET     | `/recipes`             | Lister toutes les recettes   |
+|              | GET     | `/recipes/{:id}`       | Récupérer une recette        |
+|              | PUT     | `/recipes/{:id}`       | Mettre à jour une recette    |
+|              | DELETE  | `/recipes/{:id}`       | Supprimer une recette        |
+| Steps        | POST    | `/steps`               | Créer une étape              |
+|              | GET     | `/steps`               | Lister toutes les étapes     |
+|              | GET     | `/steps/{:id}`         | Récupérer une étape          |
+|              | PUT     | `/steps/{:id}`         | Mettre à jour une étape      |
+|              | DELETE  | `/steps/{:id}`         | Supprimer une étape          |
+
+
+
+### Body pour les requêtes
+
+**Recipe**
+```json
+{
+    "title": "",
+    "preparationTime": 0,
+    "categoryId": "",
+    "ingredientIds": [
+        ""
+    ],
+    "steps": [
+        {
+            "description": "",
+            "stepOrder": 0
+        }
+    ]
+}
+```
+
+**Ingredient**
+```json
+{
+    "name": ""
+}
+```
+
+
+**Category**
+```json
+{
+    "name": ""
+}
+```
+
+**Step**
+```json
+{
+  "description": "",
+  "stepOrder": 0,
+  "recipeId": ""
+}
+```
 
 ## À Propos
 
