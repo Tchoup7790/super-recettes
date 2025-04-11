@@ -3,6 +3,7 @@ package com.group.SuperRecipes.service;
 import com.group.SuperRecipes.exception.ApiException;
 import com.group.SuperRecipes.model.dao.Category;
 import com.group.SuperRecipes.model.dao.Recipe;
+import com.group.SuperRecipes.model.dao.Step;
 import com.group.SuperRecipes.model.dao.Ingredient;
 import com.group.SuperRecipes.model.dto.CreateRecipeInput;
 import com.group.SuperRecipes.repository.CategoryRepository;
@@ -51,6 +52,18 @@ public class RecipeService {
                 .ingredients(ingredients)
                 .build();
 
+        List<Step> steps = Optional.ofNullable(input.steps())
+                .orElse(List.of())
+                .stream()
+                .map(dto -> Step.builder()
+                        .description(dto.description())
+                        .stepOrder(dto.stepOrder())
+                        .recipe(recipe)
+                        .build())
+                .toList();
+
+        recipe.setSteps(steps);
+
         return recipeRepo.save(recipe);
     }
 
@@ -64,8 +77,8 @@ public class RecipeService {
         if (input == null || id == null)
             throw new ApiException(HttpStatus.BAD_REQUEST, "Invalid input");
 
-        Recipe recipe = recipeRepo.findById(id).orElseThrow(() -> new ApiException(
-                HttpStatus.NOT_FOUND, "Recipe not found"));
+        Recipe recipe = recipeRepo.findById(id)
+                .orElseThrow(() -> new ApiException(HttpStatus.NOT_FOUND, "Recipe not found"));
 
         if (input.ingredientIds() != null) {
             Set<Ingredient> ingredients = input.ingredientIds().stream()
@@ -81,6 +94,20 @@ public class RecipeService {
             Category category = categoryRepo.findById(input.categoryId())
                     .orElseThrow(() -> new ApiException(HttpStatus.NOT_FOUND, "Category not found"));
             recipe.setCategory(category);
+        }
+
+        if (input.steps() != null) {
+            recipe.getSteps().clear();
+
+            List<Step> steps = input.steps().stream()
+                    .map(dto -> Step.builder()
+                            .description(dto.description())
+                            .stepOrder(dto.stepOrder())
+                            .recipe(recipe)
+                            .build())
+                    .toList();
+
+            recipe.getSteps().addAll(steps);
         }
 
         if (input.title() != null)
