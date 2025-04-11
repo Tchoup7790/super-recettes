@@ -1,6 +1,6 @@
 package com.group.SuperRecipes.model.dto;
 
-public record IngredientCreateInput(
+public record CreateIngredientInput(
         String name
 
 ) {

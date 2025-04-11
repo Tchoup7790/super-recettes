@@ -1,7 +1,7 @@
 package com.group.SuperRecipes.controller;
 
 import com.group.SuperRecipes.model.dao.Ingredient;
-import com.group.SuperRecipes.model.dto.IngredientCreateInput;
+import com.group.SuperRecipes.model.dto.CreateIngredientInput;
 import com.group.SuperRecipes.service.IngredientService;
 
 import java.util.List;
@@ -36,12 +36,12 @@ public class IngredientController {
     }
 
     @PostMapping
-    public Ingredient createIngredient(@RequestBody IngredientCreateInput input) {
+    public Ingredient createIngredient(@RequestBody CreateIngredientInput input) {
         return ingredientService.createIngredient(input);
     }
 
     @PutMapping("/{id}")
-    public Ingredient updateIngredient(@PathVariable String id, @RequestBody IngredientCreateInput input) {
+    public Ingredient updateIngredient(@PathVariable String id, @RequestBody CreateIngredientInput input) {
         return ingredientService.updateIngredient(id, input);
     }
 
