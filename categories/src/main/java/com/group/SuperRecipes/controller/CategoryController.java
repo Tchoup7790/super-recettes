@@ -1,17 +1,11 @@
 package com.group.SuperRecipes.controller;
 
 import com.group.SuperRecipes.model.dao.Category;
+import com.group.SuperRecipes.model.dao.Recipe;
 import com.group.SuperRecipes.model.dto.CreateCategoryInput;
 import com.group.SuperRecipes.service.CategoryService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,6 +16,12 @@ public class CategoryController {
 
     public CategoryController(CategoryService service) {
         this.service = service;
+    }
+
+
+    @GetMapping("/recipes")
+    public List<Recipe> getRecipesByCategory(@RequestParam String name) {
+        return service.getAllRecipesByCategory(name);
     }
 
     @GetMapping
