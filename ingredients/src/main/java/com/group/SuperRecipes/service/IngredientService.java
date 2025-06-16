@@ -12,6 +12,9 @@ import org.springframework.stereotype.Service;
 public class IngredientService {
     private IngredientRepository ingredientRepository;
 
+
+    //find all the recipes that share an ingridient
+
     public IngredientService(IngredientRepository ingredientRepository) {
         this.ingredientRepository = ingredientRepository;
     }

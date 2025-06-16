@@ -21,6 +21,9 @@ public class CategoryService {
         return repo.findAll();
     }
 
+
+    //find all recipes in a category
+
     public Category save(CreateCategoryInput input) {
         Category newCategory = Category.builder()
                 .name(input.name())
