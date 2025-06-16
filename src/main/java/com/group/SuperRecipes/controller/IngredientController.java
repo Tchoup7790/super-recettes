@@ -30,6 +30,11 @@ public class IngredientController {
         return ingredientService.getAllIngredient();
     }
 
+    @GetMapping("/recipes/{ingredientName}")
+    public List<Recipe> getAllRecipesByIngredient(@PathVariable String ingredientName) {
+        return ingredientService.getAllRecipesByIngredient(ingredientName);
+    }
+    
     @GetMapping("/{id}")
     public Ingredient getIngredientById(@PathVariable String id) {
         return ingredientService.getIngredientById(id);
